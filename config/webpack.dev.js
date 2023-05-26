@@ -1,21 +1,12 @@
 const { merge } = require('webpack-merge')
-const path = require('path');
+const path = require('path')
 const common = require('./webpack.common')
 
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    open: false,
-    compress: true,
-    liveReload: false,
-    hot: true,
-    client: {
-      overlay: {
-        warnings: false,
-        errors: false
-      },
-    },
+    allowedHosts: ['.csb.app'], // <  Copy and paste the domain from the URL Codebox provides for your runtime here
   },
 
   module: {
@@ -30,11 +21,11 @@ module.exports = merge(common, {
           },
           { loader: 'postcss-loader', options: { sourceMap: true } },
           {
-            loader: 'sass-loader', 
+            loader: 'sass-loader',
             options: {
               sourceMap: true,
               additionalData: async (content, loaderContext) => {
-                  return `
+                return `
                   @use "sass:map";
                   @use "sass:string";
                   @use "sass:math";
@@ -45,7 +36,7 @@ module.exports = merge(common, {
                   // ${content}
                   `
               },
-            }
+            },
           },
         ],
       },
