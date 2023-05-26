@@ -1,0 +1,290 @@
+.section-05 {
+  position: relative;
+  z-index: -1;
+
+  background: var(--body);
+
+  color: var(--white);
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    z-index: 1;
+
+    display: block;
+
+    width: var(--width);
+    height: height(.5);
+
+    background:  var(--background);
+    
+  }
+
+  .section {
+    &-inner {
+      --body: var(--white);
+      display: flex;
+      justify-content: center;
+
+      align-items: flex-end;
+
+      width: 100%;
+      height: var(--height);    
+    }
+
+    &-title {
+      position: sticky;
+      bottom: 200px;
+      
+      display: block;
+    }
+
+    &-people {
+      position: relative;
+  
+      height: height(3.5);
+
+      &::before {
+        content: "";
+    
+        position: absolute;
+        top: 0%;
+        left: 0;
+        z-index: 1;
+    
+        width: 100%;
+        height: height(1.5);
+    
+        // background: var(--body);
+        background: linear-gradient(to bottom, #2F2619 50%, transparent 100%);
+      }
+
+      &::after {
+        content: "";
+    
+        position: absolute;
+        bottom: 0%;
+        left: 0;
+        z-index: 1;
+    
+        width: 100%;
+        height: height(1);
+    
+        // background: var(--body);
+        background: linear-gradient(to top, #2F2619 50%, transparent 100%);
+      }
+
+      figure {
+        position: relative;
+        z-index: 1;
+    
+        display: block;
+    
+        // width: var(--width);
+        // max-width: 100%;
+
+        // display: none;
+
+        overflow: hidden;
+
+        transform-origin: top right;
+        transform: scale(.6);
+
+        img {
+          --trX: #{width(1)};
+
+          display: block;
+
+          width: 100%;
+          height: 100%;
+          
+          object-fit: contain;
+    
+          max-width: 40vw;
+
+          transform:translateX(  var(--trX) );
+          @include media-min(sm) {
+            --trX:  #{width(2)};
+          }
+          @include media-min(xl) {
+            --trX: #{ width(3)};
+          }
+        }
+      }
+
+      &:nth-child(3n + 3) {
+        figure {
+          // height: height(.4);
+
+          transform: scale(.8);
+        }
+
+        img {
+          --trX: #{width(2)};
+          @include media-min(sm) {
+            --trX:  #{width(6)};
+          }
+          @include media-min(xl) {
+            --trX: #{ width(8)};
+          }
+        }
+      }
+  
+      &:nth-child(2n + 3) {
+        figure {
+          height: height(.5);
+
+          transform: scale(1.1);
+
+          img {
+            --trX: #{width(2.5)};
+            @include media-min(sm) {
+              --trX:  #{width(4.5)};
+            }
+            @include media-min(xl) {
+              --trX: #{ width(7)};
+            }
+          }
+        }
+      }
+  
+      &:nth-child(3n + 1) {
+        figure {
+          height: height(.65);
+
+          // transform: scale(.9);
+          img {
+            --trX:calc(0px);
+            @include media-min(sm) {
+              --trX: calc(0px);
+            }
+            @include media-min(xl) {
+              --trX:calc(0px);
+            }
+            
+          }
+        }
+
+      }
+  
+      &:nth-child(6n + 2) {
+        figure {
+          height: height(.6);
+
+          transform: scale(.9);
+        }
+      }
+
+      &:last-of-type {
+        &::after {
+          content: '';
+  
+          position: absolute;
+          top: 100%;
+          left:0;
+          z-index: 10;
+  
+          display: block;
+  
+          width: var(--width);
+          height: var(--height);
+  
+          background: linear-gradient(to bottom, #2F2619 50%, transparent 100%);
+        }
+      }
+    }
+
+    &-people-title {
+      width: width(10);
+      max-width: var(--width);
+
+      font-family: $font-secondary;
+      font-size: fluid(40px, 150px);
+      line-height: 1;
+      color: var(--white);
+    }
+
+    &-people-subtitle {
+      font-family: $font-secondary;
+      font-size: fluid(30px, 50px);
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    &-people-surname {
+      position: sticky;
+      top: 0%;
+      left: 50%;
+      z-index: 0;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: var(--height);
+
+      opacity: .05;
+
+      text-align: center;
+
+      font-family: $font-primary;
+      font-size: fluid(30px, 200px);
+      line-height: 1;
+      color: var(--white);
+    }
+
+    &-people-content {
+      position: sticky;
+      top: 50%;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      justify-content:flex-end;
+      align-items: center;
+
+      padding-bottom: height(.5);
+
+      text-align: center;
+    }
+    
+  }
+
+  
+}
+
+.section-cite {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  height: calc(var(--height) * 1.5);
+
+  padding: 0 fluid(20px, 40px);
+
+  p {
+    --width: #{width(4)};
+    @include media-min(sm) {
+      --width:  #{width(5)};
+    }
+    @include media-min(xl) {
+      --width: #{ width(8)};
+    }
+    position: sticky;
+    bottom: 40px;
+
+    width: var(--width);
+
+    max-width: 100%;
+  }
+
+  cite {
+    display: block;
+
+    text-align: right;
+    font-size: fluid(22px, 32px);
+  }
+
+}

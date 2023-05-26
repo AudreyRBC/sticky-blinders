@@ -1,0 +1,94 @@
+.section-column {
+  position: absolute;
+  z-index: 0;
+
+  // display: none;
+
+  width: 100px;
+
+  pointer-events: none;
+
+  &-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: height(var(--vitesse));
+
+    transform-origin: top left;
+
+    transform: scale(calc((var(--vitesse)) / 20 ))
+  }
+
+  &-circle {
+    content: '';
+
+    position: sticky;
+    top: 50%;
+
+
+    display: block;
+
+    width: 100px;
+    height: 100px;
+
+    opacity: .8;
+
+    transform-origin: top left;
+
+    transform: scale(calc((var(--vitesse) * var(--size)) / 2) );
+  }
+}
+
+.section-03 {
+  .section-column-1 {
+    --vitesse: 14;
+    --size: .4;
+    position: absolute;
+    top: 150px;
+    left: 55%;
+
+    order: 2;
+  
+    height: height(3);
+  }
+
+  .section-column-2 {
+    --vitesse: 10;
+    --size: .4;
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    z-index: 10;
+
+    order: 2;
+    
+    .section-column-circle {
+      top: 150%;
+
+      transform-origin: top right;
+    }
+  }
+}
+
+.section-04 {
+  .section-column-1 {
+     --vitesse: 12;
+    --size: .4;
+     position: absolute;
+    top: 50%;
+    left: 15%;
+
+    z-index: 10;
+
+    order: 4;
+
+    opacity: .5;
+    
+    .section-column-circle {
+      top: 160%;
+    }
+  }
+}

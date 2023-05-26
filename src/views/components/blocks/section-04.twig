@@ -1,0 +1,27 @@
+<div class="section-overlaps">
+  <div class="section-inner">
+    <h3 class="section-title">{{ section.title }}</h3>
+  </div>
+
+  {% for person in section.people %}
+  <div class="section-people">
+    <span class="section-people-surname">{{person.surname}}</span>
+    <div class="section-people-content">
+      <div>
+        <strong class="section-people-subtitle">{{person.function}}</strong>
+        <h4 class="section-people-title">{{person.name}} </h4>
+      </div>
+    </div>
+    <figure>
+      <img src="{{person.portrait}}">
+    </figure>
+  </div>
+  {% endfor %}
+  <blockquote class="section-cite">
+    <p class="section-people-subtitle">
+      "{{section.quote.content}}"
+      <cite >— chatGPT —</cite>
+    </p>
+  </blockquote>
+</div>
+{% if section.content %}<div class="section-content">{{ section.content }}</div>{% endif %}

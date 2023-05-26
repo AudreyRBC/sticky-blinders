@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="fr">
+
+{% block head %}
+  {% include '@base/head.html.twig' %}
+{% endblock %}
+
+<body class="{{bodyclass}}">
+  {% block header %}
+    
+  {% endblock %}
+  <main>
+    {% block main %}{% endblock %}
+  </main>
+
+  {% block footer %}{% endblock %}
+</html>

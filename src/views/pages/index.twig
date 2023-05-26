@@ -1,0 +1,28 @@
+{% extends '@base/base.html.twig' %}
+
+{% block header %}
+{# {% include '@common/header/header.twig' %} #}
+{% endblock %}
+
+{% block main %}
+<article>
+  <section class="section section-01">
+    <div class="section-overlaps">
+      <div class="section-inner">
+        <h2 class="title">Sticky Blinders</h2>
+      </div>
+    </div>
+  </section>
+
+  {% for section in sections %}
+  <section class="section section-0{{loop.index + 1}}">
+    {% include "@components/blocks/section-0"~ loop.index ~ ".twig" %}
+  </section>
+  {% endfor %}
+</article>
+{% endblock %}
+
+
+
+{% block footer %}
+{% endblock %}

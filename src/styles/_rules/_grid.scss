@@ -1,0 +1,143 @@
+@use 'breakpoints' as *;
+
+@function width($numberOfColumns) {
+  @return calc((#{$numberOfColumns} * var(--columns-size)) + (($numberOfColumns - 1) * var(--columns-gap)));
+}
+@function width-out($numberOfColumns) {
+  @return calc((#{$numberOfColumns} * var(--columns-size)) + ((#{$numberOfColumns} - 1) * var(--columns-gap)) + var(--margin));
+}
+@function height($numberOfColumns) {
+  @return calc(#{$numberOfColumns} * var(--height));
+}
+
+
+@mixin column($bp, $numberOfColumns, $start: 'auto') {
+  @include media-min($bp) {
+    grid-column: get-grid-el($numberOfColumns, $start);
+  }
+}
+@mixin row($bp, $row) {
+  @include media-min($bp) {
+    grid-row: $row;
+  }
+}
+@mixin column-width($bp, $numberOfColumns) {
+  @include media-min($bp) {
+    width: calc(#{$numberOfColumns} * var(--columns-size) + (#{$numberOfColumns} - 1) * var(--columns-gap));
+  }
+}
+
+@function get-grid-el($numberOfColumns, $start: 'auto') {
+  @if $numberOfColumns == var(--columns-count) {
+    /* stylelint-disable */
+    @return #{ 1 / span var(--columns-count)};
+
+  } @else if $start == 'auto' {
+    @return auto / span $numberOfColumns;
+  } @else {
+    @return $start / span $numberOfColumns;
+  }
+}
+
+
+%grid {
+  display: grid;
+
+  grid-template-columns: repeat(calc(var(--columns-count)), 1fr);
+  grid-gap: var(--rows-gap) var(--columns-gap);
+
+  align-items: flex-start;
+
+  width: width(var(--columns-count));
+  max-width: width(var(--columns-count));
+  align-content: stretch;
+}
+
+
+
+%grid-md {
+  width: width(var(--columns-count));
+
+  margin: 0 auto;
+  
+  @include media-min(sm) {
+    max-width: width(6);
+  }
+  @include media-min(xl) {
+    max-width: width(8);
+  }
+}
+
+%grid-lg {
+  width: width(var(--columns-count));
+  
+  margin: 40px auto;
+  
+  @include media-min(sm) {
+    margin: 80px auto;
+  }
+  
+  @include media-min(xl) {
+    max-width: width(12);
+  }
+}
+
+%grid-full {
+  width: width(var(--columns-count));
+  max-width: width(var(--columns-count));
+
+  margin: fluid(40px, 80px) auto;
+}
+
+.grid {
+  @extend %grid;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.grid-lg {
+  @extend %grid-lg;
+  margin-right: auto;
+  margin-left: auto;
+}
+.grid-md {
+  @extend %grid-md;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.grid-tpl {
+  @extend %grid;
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 10;
+
+  width: width(var(--columns-count));
+  height: 100vh;
+  max-width: width(var(--columns-count));
+
+  pointer-events: none;
+  overflow: hidden;
+
+  transform-origin: top;
+
+  transform: scaleY(1) translateX(-50%);
+
+  transition: transform .3s ease;
+
+  
+  .col {
+    @include column(xxs, 1);
+
+    height: 100%;
+
+    background: rgba(#353535, .1);
+  }
+
+  &.hide {
+    transform: scaleY(0) translateX(-50%);
+  }
+}

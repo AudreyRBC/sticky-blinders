@@ -1,0 +1,75 @@
+@use 'sass:map';
+
+/* ----Responsive breakpoints---- */
+$breakpoints: (
+  xxs: 0,
+  xs:  375px,
+  smd:  450px,
+  sm:  769px,
+  md:  980px,
+  lg:  1025px,
+  xl:  1100px,
+  xxl: 1440px,
+  xxxl: 1600px,
+  full: 1728px
+);
+
+
+/* ----Minimum size---- */
+@mixin media-min($bp) {
+
+  $value: $bp;
+
+  @if map-has-key($breakpoints, $bp) {
+    $value: map.get($breakpoints, $bp);
+  }
+
+  @media screen and (min-width: $value) {
+    @content;
+  }
+}
+
+/* ----Maximum size---- */
+@mixin media-max($bp) {
+
+  $value: $bp;
+
+  @if map-has-key($breakpoints, $bp) {
+    $value: map.get($breakpoints, $bp);
+  }
+
+  @media screen and (max-width: #{$value - 1}) {
+    @content;
+  }
+}
+
+/* ----Between minimum size & maximum size---- */
+@mixin media-minmax($min, $max) {
+  $valueMin: $min;
+
+  @if map-has-key($breakpoints, $min) {
+    $valueMin: map.get($breakpoints, $min);
+  }
+
+  $valueMax: $max;
+
+  @if map-has-key($breakpoints, $max) {
+    $valueMax: map.get($breakpoints, $max);
+  }
+
+  @media screen and (min-width: $valueMin) and (max-width: #{$valueMax - 1}) {
+    @content;
+  }
+}
+
+/* ----Hover or not hover this is the question---- */
+@mixin media-hover() {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+@mixin media-no-hover() {
+  @media (hover: none) and (pointer: coarse) {
+    @content;
+  }
+}

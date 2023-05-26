@@ -1,0 +1,6 @@
+<div class="section-inner">
+  <strong class="section-chapter">Chapitre {{loop.index}}</strong>
+  <h3 class="section-title">{{ section.title }}</h3>
+  <div class="section-intro">{{ section.intro }}</div>
+</div>
+{% if section.content %}<div class="section-content">{{ section.content }}</div>{% endif %}

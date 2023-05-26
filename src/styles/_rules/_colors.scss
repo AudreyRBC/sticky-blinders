@@ -1,0 +1,18 @@
+@use './fonts' as *;
+
+$black: #121212;
+$white: #fff;
+
+
+:root {
+  --black: #{$black};
+  --white: #{$white};
+  --body: #2F2619;
+  --background: #CC9C62;
+}
+
+body {
+  background: var(--background);
+
+  color: var(--body);
+}

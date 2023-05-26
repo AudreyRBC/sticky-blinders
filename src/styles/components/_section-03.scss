@@ -1,0 +1,29 @@
+.section-03 {
+  display: flex;
+  flex-wrap: wrap;
+
+  .section {
+    &-chapter {
+      margin-bottom: 10px;
+    }
+
+    &-inner {
+      position: sticky;
+      top: 0;
+
+      width: 100%;
+
+      padding: 40px 0;
+
+      padding: 40px fluid(20px, 40px);
+
+      background: var(--background);
+    }
+
+    &-content {
+      width: calc(100% - 400px);
+
+      padding: 0px fluid(20px, 40px);
+    }
+  }
+}

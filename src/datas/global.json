@@ -1,0 +1,32 @@
+{
+  "header": {
+    "navigation": {
+      "items": [
+        {
+          "url": "https://www.vanksen.com/en/about-us",
+          "label": "About us"
+        },
+        {
+          "url": "https://www.vanksen.com/en/services",
+          "label": "Services" 
+        },
+        {
+          "url": "https://www.vanksen.com/en/references",
+          "label": "References" 
+        },
+        {
+          "url": "https://www.vanksen.com/en/insights",
+          "label": "Insights" 
+        },
+        {
+          "url": "https://www.vanksen.com/en/career",
+          "label": "Career" 
+        },
+        {
+          "url": "https://www.vanksen.com/en/contact",
+          "label": "Contact" 
+        }
+      ]
+    }
+  }
+}

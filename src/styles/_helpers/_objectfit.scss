@@ -1,0 +1,52 @@
+@use './timing-functions' as *;
+
+picture,
+.objectfit {
+  img,
+  &--cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &--contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+
+}
+
+picture {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  &[data-observer] img {
+    opacity: 0;
+
+    transition: opacity .3s $ease-in-quad;
+  }
+
+  &.--appear img {
+    opacity: 1;
+  }
+}
+
+img {
+  display: block;
+}
+
+
+svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,11 @@
+@use '~styles/_helpers/font-face' as *;
+
+@include font-face('Lostar', '~/public/assets/fonts/Lostar', 500, normal, ttf);
+@include font-face('Vercetti-Regular', '~/public/assets/fonts/Vercetti-Regular', 500, normal, otf);
+
+$font-primary: 'Lostar', sans-serif;
+$font-secondary: 'Vercetti-Regular', sans-serif;
+
+body {
+  font-family: $font-primary;
+}

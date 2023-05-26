@@ -1,0 +1,79 @@
+/* ----Normalize for all---- */
+
+* {
+  margin: 0;
+
+  /* init margin and paddi */
+  padding: 0;
+
+  /* adding padding no change de fl */
+  box-sizing: border-box;
+
+  background: transparent;
+  border: none;
+
+  border-radius: none;
+
+  /* remove tag a default sty */
+  outline: none;
+
+  /* Beautify fon */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-decoration: none;
+
+  /* remove btns & inputs default sty */
+  -webkit-appearence: none;
+  -webkit-apparence: none;
+
+  /*  font-size: strip-units($base-font-size) / 16 * 100%; */
+
+  /* 2 */
+
+ /* 3 */
+  text-size-adjust: 100%; /* 3 */
+  
+}
+
+address {
+  font-style: normal;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+.overflow {
+  max-width: var(--width);
+  max-height: 100vh;
+
+  /*  height: calc(100vh - env(safe-area-inset-top) */
+  overflow: hidden;
+}
+
+main {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  position: relative;
+
+  width: 100%;
+
+  font-size: 16px;
+
+  &[focus='on'] *:focus,
+  &[focus='on'] input[type='checkbox']:focus ~ label {
+    outline: 2px solid #00f !important;
+  }
+}

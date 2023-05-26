@@ -1,0 +1,60 @@
+/*
+Maintain an elements aspect ratio, even as it scales.
+@example scss - Usage
+.element {
+  @include aspect-ratio(16, 9);
+}
+@example css - CSS Output
+  .element {
+    position: relative; 
+    &:before {
+      padding-top: 56.25%;
+      display: block;
+      content: '';
+    }
+  }
+*/
+
+@use 'strip-units' as *;
+
+@mixin aspect-ratio($width, $height) {
+  $width: strip-units($width);
+  $height: strip-units($height);
+  $ratio: $height / $width * 100%;
+  position: relative;
+
+  &::before {
+    content: '';
+
+    display: block;
+
+    padding: $ratio 0 0;
+  }
+}
+
+@function ratio($width, $limit: 1728) {
+  @return calc($width / $limit * var(--width));
+}
+@function ratio-height($height, $limit: 1116) {
+  @return calc($height / $limit * 100vh);
+}
+@function fluid($min, $max: 0, $width: 1728) {
+  @if not ($max) {
+    $max: $min;
+  }
+
+  $striped: strip-units($max);
+  $ratio: ratio($striped, $width);
+
+  @return clamp(#{$min}, #{$ratio}, #{$max} );
+}
+@function fluid-height($min, $max: 0, $height: 1116) {
+  @if not ($max) {
+    $max: $min;
+  }
+
+  $striped: strip-units($max);
+  $ratio: ratio($striped, $height);
+
+  @return clamp(#{$min}, #{$ratio}, #{$max} );
+}

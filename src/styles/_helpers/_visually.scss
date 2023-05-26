@@ -1,0 +1,46 @@
+// Hide element only visually, but have it available for screen readers:
+// http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+
+%u-visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  margin: -1px;
+  padding: 0;
+
+  border: 0;
+  clip: rect(0 0 0 0);
+
+  overflow: hidden;
+
+  
+}
+
+
+
+.u-visually-hidden {
+  @extend %u-visually-hidden; 
+
+  &--focusable {
+    &:active,
+    &:focus {
+      position: static;
+
+      width: auto;
+      height: auto;
+
+      margin: 0;
+
+      clip: auto;
+
+      overflow: visible;
+    }
+  }
+
+  &::after,
+  &::before {
+    display: none;
+  }
+}
