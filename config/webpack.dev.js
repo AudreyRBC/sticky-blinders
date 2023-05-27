@@ -6,17 +6,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    open: false,
-    compress: true,
-    liveReload: false,
-    hot: true,
-    allowedHosts: ['.csb.app'],
-    client: {
-      overlay: {
-        warnings: false,
-        errors: false
-      },
-    },
+    allowedHosts: ['.csb.app']
   },
 
   module: {
