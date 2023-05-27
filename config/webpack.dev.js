@@ -10,6 +10,7 @@ module.exports = merge(common, {
     compress: true,
     liveReload: false,
     hot: true,
+    allowedHosts: ['.csb.app'],
     client: {
       overlay: {
         warnings: false,
